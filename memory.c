@@ -35,16 +35,6 @@ size_t memory_avail()
   }
   return count;
 
-  /*
-  for(size_t i = 0; i<num_frames; i++){
-       printf("*** %c",info_ptr[i]);
-    }
-  size_t count = 0;
-  for (size_t i=0; i < num_frames; i++){
-    if (info_ptr[i] == '0')
-      count++;
-  }
-  return count * FRAME_SIZE;*/
 }
 
 void* memory_alloc(size_t size)
@@ -54,14 +44,6 @@ void* memory_alloc(size_t size)
   size_t frames  = (size + FRAME_SIZE - 1) / FRAME_SIZE;
   for (size_t i = 0; i<num_frames; i++){
     if(info_ptr[i] == '0'){
-      //size_t count = 1;
-      /*for (size_t k = 1; k < frames; k++){
-	if (info_ptr[i+k] == 0)
-	  count++;
-	else
-	  break;
-      }
-      if (count == frames){*/
 	info_ptr[i] = '1';
 	for (size_t j = 1; j<frames; j++)
 	  info_ptr[i+j] = '2';
